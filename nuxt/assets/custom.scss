@@ -1,0 +1,18 @@
+thead.p-datatable-thead th.p-datatable-header-cell {
+  background-color: var(--primary-color) !important;
+  color: white;
+}
+
+.ri-spin {
+  display: inline-block;
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
