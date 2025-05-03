@@ -9,7 +9,9 @@ Route::middleware('guest')->group(function(){
 
 
 Route::middleware('auth:sanctum')->group(function(){
+    Route::post('/logout', [AuthController::class, 'doLogout'])->name('logout');
 	foreach (glob(__DIR__."/modules/*.php") as $filename){
 		require $filename;
 	}
 });
+

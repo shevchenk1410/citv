@@ -36,13 +36,16 @@ class UsuarioController extends Controller
         else
             return response()->json($query->get());
     }
-
     public function getAuth(){
-        $auth = auth()->user()->load(['rol.menus'=>function($query){
-            $query->with(['menus'=>function($q){
-                $q->orderBy('orden');
-            }])->orderBy('orden');
+        $auth = auth()->user()->load(['rol.menus' => function($query){
+            $query->where('estado', 1)  // Solo menús estado = 1
+                  ->with(['menus' => function($q){
+                      $q->where('estado', 1)  // Solo submenús estado = 1
+                        ->orderBy('orden');
+                  }])
+                  ->orderBy('orden');
         }]);
+
         return response()->json($auth);
     }
 

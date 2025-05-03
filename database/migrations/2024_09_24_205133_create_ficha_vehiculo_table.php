@@ -52,6 +52,7 @@ return new class extends Migration
             $table->date('FECINIPOLIZA')->nullable();
             $table->date('FECFINPOLIZA')->nullable();
             $table->string('MENSAJE')->nullable();
+            $table->integer('estado')->default(1);
             $table->timestamps();
         });
     }

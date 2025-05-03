@@ -63,6 +63,24 @@ export default function useApiEntity(endpoint: string) {
             handleError(error);
         }
     }
+    const getEntityById = async (id: number) => {
+        try {
+            return await client(`${apiEndpoint}/${id}`);
+        } catch (error: any) {
+            handleError(error);
+        }
+    };
+    const generarReportePdf = async (data: Record<string, any>) => {
+        try {
+            return await client(`${baseURL}/api/reporte/generar-pdf`, {
+                method: 'POST',
+                body: data
+            });
+        } catch (error: any) {
+            handleError(error);
+        }
+    };
+
 
     return {
         getEntities,
@@ -71,5 +89,7 @@ export default function useApiEntity(endpoint: string) {
         updateEntity,
         updateEntityMenu,
         updateEntityPoliza,
+        getEntityById,
+        generarReportePdf
     };
 }

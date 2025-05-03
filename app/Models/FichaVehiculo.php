@@ -51,22 +51,34 @@ class FichaVehiculo extends Model
         'NUMPOLIZA',
         'FECINIPOLIZA',
         'FECFINPOLIZA',
-        'MENSAJE'
+        'MENSAJE',
+        'estado'
     ];
 
-    public function sucursal(){
+    public function sucursal()
+    {
         return $this->belongsTo(Sucursal::class);
     }
 
-    public function cliente(){
+    public function cliente()
+    {
         return $this->belongsTo(Cliente::class);
     }
 
-    public function cliente2(){
+    public function cliente2()
+    {
         return $this->belongsTo(Cliente::class);
     }
 
-    public function tipo_inspeccion(){
+    public function tipo_inspeccion()
+    {
         return $this->belongsTo(TipoInspeccion::class, 'TIPINSPECCION', ownerKey: 'codigo');
+    }
+    public function usuario()
+    {
+        return $this->belongsTo(Usuario::class);
+    }
+    public function evaluacion() {
+        return $this->hasOne(FichaVehiculoEvaluacion::class);
     }
 }

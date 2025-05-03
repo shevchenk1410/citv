@@ -27,7 +27,7 @@ class CreateService {
             'sucursal_id' => auth()->user()->sucursal_id,
             'usuario_id' => auth()->id(),
             'CIOD_CITV' => $currentOperacion->CIOD_CITV,
-            'PLACA' => 'B26963',
+            'PLACA' => $data['PLACA'],
             'CATEGORIA' => $data['CATEGORIA'],
             'TIPSERVICIO' => $data['TIPSERVICIO'],
             'TIPAMBITO' => $data['TIPAMBITO'],

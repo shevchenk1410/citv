@@ -1,5 +1,11 @@
 <script setup>
 const { onMenuToggle, toggleDarkMode, isDarkTheme } = useLayout();
+const { logout } = useSanctumAuth();
+const onLogout = async () => {
+    localStorage.clear();
+    await logout();
+    await navigateTo('/login');
+};
 </script>
 <template>
     <div class="layout-topbar">
@@ -46,9 +52,32 @@ const { onMenuToggle, toggleDarkMode, isDarkTheme } = useLayout();
 
             <div class="layout-topbar-menu hidden lg:block">
                 <div class="layout-topbar-menu-content">
-                    <button type="button" class="layout-topbar-action">
-                        <i class="pi pi-user"></i>
-                        <span>Profile</span>
+                    <div class="relative">
+                        <button type="button" class="layout-topbar-action">
+                            <i class="pi pi-user"></i>
+                            <span>Profile</span>
+                        </button>
+                        <!-- <Popover ref="profile" style="width: 350px">
+                            <Card>
+                                <template #title>{{ user.nombres }} {{ user.apellidos }}</template>
+                                <template #subtitle>{{ user.rol?.nombre }}</template>
+                                <template #content>
+                                    <p class="m-0 mb-4">
+                                        {{ user.nombres }}
+                                    </p>
+                                    <div class="border-t pt-3 mt-3">
+                                        <button @click="showModalCambiarClave = true" class="flex items-center text-red-700 hover:text-red-800 cursor-pointer">
+                                            <i class="pi pi-lock mr-2"></i>
+                                            <span>Cambiar Contraseña</span>
+                                        </button>
+                                    </div>
+                                </template>
+                            </Card>
+                        </Popover> -->
+                    </div>
+                    <button type="button" class="layout-topbar-action" @click="onLogout">
+                        <i class="pi pi-sign-out"></i>
+                        <span>Cerrar sesión</span>
                     </button>
                 </div>
             </div>

@@ -127,7 +127,7 @@ onBeforeMount(()=>{
     <Toolbar class="mb-6">
         <template #start>
             <InputGroup class="me-2">
-                <InputText type="text" placeholder="Buscar por nombre" v-model="term" class="w-[300px]" />                    
+                <InputText type="text" placeholder="Buscar por nombre" v-model="term" class="w-[300px]" />
                 <Button icon="pi pi-search" severity="primary" @click.prevent="loadRows(1)"/>
             </InputGroup>
         </template>
@@ -150,7 +150,7 @@ onBeforeMount(()=>{
             <template #empty><div class="text-center"><i class="ri-information-line"></i> <span>Sin registros</span></div></template>
             <template #loading>
                 <div class="text-center text-[24px]"><i class="ri-loader-line ri-spin"></i> Cargando</div>
-            </template>>
+            </template>
             <Column field="nombre" header="Nombre"></Column>
             <Column field="url" header="URL"></Column>
             <Column>
